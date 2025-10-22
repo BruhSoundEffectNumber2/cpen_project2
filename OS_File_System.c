@@ -82,6 +82,25 @@ uint8_t OS_File_Size(uint8_t num)
 // Errors: 255 on failure or disk full
 uint8_t OS_File_Append(uint8_t num, uint8_t buf[512])
 {
+  uint8_t fs;
+
+  // Is there any disk space free?
+  fs = find_free_sector();
+
+  if (fs == 255)
+  {
+    return 255;
+  }
+
+  uint8_t size = OS_File_Size(num);
+  append_fat(num, fs);
+
+  if (eDisk_WriteSector(buf, size))
+  {
+    return 255;
+  }
+
+  return 0;
 }
 
 // Helper function find_free_sector returns the logical
@@ -245,9 +264,15 @@ uint8_t OS_File_Format(void)
 
   while (address <= 0x00040000)
   {
-    Flash_Erase(address); // erase 1k block
+    if (Flash_Erase(address))
+    {
+      return 255;
+    }
+
     address += 1024;
   }
+
+  return 0;
 }
 
 //******** OS_File_Flush*************
@@ -280,7 +305,9 @@ uint8_t OS_File_Flush(void)
 
     if (Flash_Write(phys_address + i, word))
     {
-      return 1;
+      return 255;
     }
   }
+
+  return 0;
 }
