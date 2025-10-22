@@ -258,4 +258,29 @@ uint8_t OS_File_Format(void)
 // Errors: 255 on disk write failure
 uint8_t OS_File_Flush(void)
 {
+  uint32_t phys_address = Disk_Start_Address + 255 * 512;
+
+  for (uint32_t i = 0; i < 512; i += 4)
+  {
+    // Push the 4 bytes into 1 word
+    uint32_t word = 0;
+
+    for (uint8_t j = 0; j < 4; j++)
+    {
+      // Get from directory or FAT
+      if (i < 256)
+      {
+        word |= (RAM_Directory[i + j] << j * 8);
+      }
+      else
+      {
+        word |= (RAM_FAT[i + j] << j * 8);
+      }
+    }
+
+    if (Flash_Write(phys_address + i, word))
+    {
+      return 1;
+    }
+  }
 }
