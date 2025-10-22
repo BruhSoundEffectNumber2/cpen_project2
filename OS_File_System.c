@@ -92,10 +92,9 @@ uint8_t OS_File_Append(uint8_t num, uint8_t buf[512])
     return 255;
   }
 
-  uint8_t size = OS_File_Size(num);
   append_fat(num, fs);
 
-  if (eDisk_WriteSector(buf, size))
+  if (eDisk_WriteSector(buf, fs))
   {
     return 255;
   }
@@ -107,7 +106,7 @@ uint8_t OS_File_Append(uint8_t num, uint8_t buf[512])
 // address of the first free sector
 uint8_t find_free_sector(void)
 {
-  uint8_t fs = -1;
+  uint16_t fs = -1;
   uint8_t ls;
 
   // Look through all files, finding the last sector used by any of them
