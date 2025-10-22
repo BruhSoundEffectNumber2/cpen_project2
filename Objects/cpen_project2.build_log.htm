@@ -1,0 +1,132 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.43.1.0
+Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Damon Lewis, Gonzaga University, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.43.0.0
+Toolchain Path:  C:\Users\crazy\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.24
+Assembler:       Armasm.exe V6.24
+Linker/Locator:  ArmLink.exe V6.24
+Library Manager: ArmAr.exe V6.24
+Hex Converter:   FromElf.exe V6.24
+CPU DLL:         SARMCM3.DLL V5.43.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      lmidk-agdi.dll V???
+Dialog DLL:      TCM.DLL V1.56.6.0
+ 
+<h2>Project:</h2>
+C:\Users\crazy\Documents\uvision\cpen_project2\cpen_project2.uvprojx
+Project File Date:  10/21/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.24', folder: 'C:\Users\crazy\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target_1'
+OS_File_System.c(30): warning: non-void function does not return a value [-Wreturn-type]
+   30 | }
+      | ^
+OS_File_System.c(38): warning: unused parameter 'num' [-Wunused-parameter]
+   38 | uint8_t OS_File_Size(uint8_t num){
+      |                              ^
+OS_File_System.c(40): warning: non-void function does not return a value [-Wreturn-type]
+   40 | }
+      | ^
+OS_File_System.c(48): warning: unused parameter 'num' [-Wunused-parameter]
+   48 | uint8_t OS_File_Append(uint8_t num, uint8_t buf[512]){
+      |                                ^
+OS_File_System.c(48): warning: unused parameter 'buf' [-Wunused-parameter]
+   48 | uint8_t OS_File_Append(uint8_t num, uint8_t buf[512]){
+      |                                             ^
+OS_File_System.c(50): warning: non-void function does not return a value [-Wreturn-type]
+   50 | }
+      | ^
+OS_File_System.c(56): warning: non-void function does not return a value [-Wreturn-type]
+   56 | }
+      | ^
+OS_File_System.c(60): warning: unused parameter 'start' [-Wunused-parameter]
+   60 | uint8_t last_sector(uint8_t start){
+      |                             ^
+OS_File_System.c(62): warning: non-void function does not return a value [-Wreturn-type]
+   62 | }
+      | ^
+OS_File_System.c(68): warning: unused parameter 'num' [-Wunused-parameter]
+   68 | void append_fat(uint8_t num, uint8_t n){
+      |                         ^
+OS_File_System.c(68): warning: unused parameter 'n' [-Wunused-parameter]
+   68 | void append_fat(uint8_t num, uint8_t n){
+      |                                      ^
+OS_File_System.c(78): warning: unused parameter 'buf' [-Wunused-parameter]
+   78 | uint8_t eDisk_WriteSector(uint8_t buf[512], uint8_t n){
+      |                                   ^
+OS_File_System.c(78): warning: unused parameter 'n' [-Wunused-parameter]
+   78 | uint8_t eDisk_WriteSector(uint8_t buf[512], uint8_t n){
+      |                                                     ^
+OS_File_System.c(80): warning: non-void function does not return a value [-Wreturn-type]
+   80 | }
+      | ^
+OS_File_System.c(90): warning: unused parameter 'num' [-Wunused-parameter]
+   90 | uint8_t OS_File_Read( uint8_t num, uint8_t location, uint8_t buf[ 512]){
+      |                               ^
+OS_File_System.c(90): warning: unused parameter 'location' [-Wunused-parameter]
+   90 | uint8_t OS_File_Read( uint8_t num, uint8_t location, uint8_t buf[ 512]){
+      |                                            ^
+OS_File_System.c(90): warning: unused parameter 'buf' [-Wunused-parameter]
+   90 | uint8_t OS_File_Read( uint8_t num, uint8_t location, uint8_t buf[ 512]){
+      |                                                              ^
+OS_File_System.c(92): warning: non-void function does not return a value [-Wreturn-type]
+   92 | }
+      | ^
+OS_File_System.c(106): warning: non-void function does not return a value [-Wreturn-type]
+  106 | }
+      | ^
+OS_File_System.c(115): warning: non-void function does not return a value [-Wreturn-type]
+  115 | }
+      | ^
+20 warnings generated.
+compiling OS_File_System.c...
+Test_File_System.c(5): warning: non-portable path to file '"TM4C123GH6PM.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+    5 | #include "tm4c123gh6pm.h"
+      |          ^~~~~~~~~~~~~~~~
+      |          "TM4C123GH6PM.h"
+1 warning generated.
+compiling Test_File_System.c...
+linking...
+Program Size: Code=1952 RO-data=16 RW-data=0 ZI-data=2152  
+".\Objects\cpen_project2.axf" - 0 Error(s), 21 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.2.0.pack
+                ARM::CMSIS@6.2.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.1
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil::TM4C_DFP@1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+   * Component: Startup Version: 1.0.1
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/crazy/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include
+  C:/Users/crazy/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.1
+
+   * Component: Keil::Device:Startup@1.0.1
+      Source file:   Device/Source/system_TM4C123.c
+      Include file:  Device/Include/TM4C123/TM4C123.h
+      Source file:   Device/Source/ARM/startup_TM4C123.s
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
