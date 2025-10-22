@@ -15,7 +15,6 @@ uint8_t OS_File_Read(uint8_t, uint8_t, uint8_t *);
 uint8_t eDisk_WriteSector(uint8_t *, uint8_t);
 uint8_t OS_File_Flush(void);
 uint8_t OS_File_Append(uint8_t num, uint8_t buf[512]);
-int Flash_Erase(uint32_t);
 uint8_t OS_File_Format(void);
 
 #endif // OS_FILE_SYSTEM_H

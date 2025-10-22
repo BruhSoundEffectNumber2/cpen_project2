@@ -177,7 +177,7 @@ uint8_t eDisk_WriteSector(uint8_t buf[512], uint8_t n)
 
     for (uint8_t j = 0; j < 4; j++)
     {
-      word &= (buf[i + j] << j * 8);
+      word |= (buf[i + j] << j * 8);
     }
 
     if (Flash_Write(phys_address + i, word))
