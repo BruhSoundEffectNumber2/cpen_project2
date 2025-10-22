@@ -180,10 +180,10 @@ uint8_t eDisk_WriteSector(uint8_t buf[512], uint8_t n)
       word &= (buf[i + j] << j * 8);
     }
 
-    // if (Flash_Write(phys_address + i, word))
-    // {
-    //   return 1;
-    // }
+    if (Flash_Write(phys_address + i, word))
+    {
+      return 1;
+    }
   }
 
   return 0;
