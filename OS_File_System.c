@@ -198,6 +198,40 @@ uint8_t eDisk_WriteSector(uint8_t buf[512], uint8_t n)
 // Errors: 255 on failure because no data
 uint8_t OS_File_Read(uint8_t num, uint8_t location, uint8_t buf[512])
 {
+  // Find the logical sector
+  uint8_t current = RAM_Directory[num];
+
+  if (current == 255)
+  {
+    // File does not exist
+    return 255;
+  }
+
+  for (uint8_t i = 0; i < location; i++)
+  {
+    current = RAM_FAT[current];
+
+    if (current == 255)
+    {
+      // File has less sectors than expected
+      return 255;
+    }
+  }
+
+  uint32_t *phys_address = (uint32_t *)(Disk_Start_Address + current * 512);
+
+  for (uint32_t i = 0; i < 512; i += 4)
+  {
+    uint32_t word = phys_address[i];
+
+    // Split the word into 4 bytes
+    for (uint8_t j = 0; j < 4; j++)
+    {
+      buf[i + j] = word >> j * 8;
+    }
+  }
+
+  return 0;
 }
 
 //******** OS_File_Format*************
