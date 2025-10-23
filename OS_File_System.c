@@ -238,14 +238,15 @@ uint8_t OS_File_Read(uint8_t num, uint8_t location, uint8_t buf[512])
 
   uint32_t *phys_address = (uint32_t *)(Disk_Start_Address + current * 512);
 
-  for (uint32_t i = 0; i < 512; i += 4)
+  for (uint32_t i = 0; i < 128; i++)
   {
     uint32_t word = phys_address[i];
 
     // Split the word into 4 bytes
     for (uint8_t j = 0; j < 4; j++)
     {
-      buf[i + j] = word >> j * 8;
+      uint8_t byte = (word >> (j * 8)) & 0xff;
+      buf[i + j] = byte;
     }
   }
 
@@ -298,7 +299,7 @@ uint8_t OS_File_Flush(void)
       }
       else
       {
-        word |= (RAM_FAT[i + j] << j * 8);
+        word |= (RAM_FAT[i - 256 + j] << j * 8);
       }
     }
 
