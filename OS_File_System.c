@@ -246,7 +246,7 @@ uint8_t OS_File_Read(uint8_t num, uint8_t location, uint8_t buf[512])
     for (uint8_t j = 0; j < 4; j++)
     {
       uint8_t byte = (word >> (j * 8)) & 0xff;
-      buf[i + j] = byte;
+      buf[i * 4 + j] = byte;
     }
   }
 
